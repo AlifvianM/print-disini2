@@ -23,110 +23,159 @@
     </head>
     <body>
         
-        <!--================Header Menu Area =================-->
-        <header class="header_area">
-            <div class="main_menu">
-            	<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container box_1620">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html"><img src="{% static "users/img/logo.png" %} " alt=""></a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-							<ul class="nav navbar-nav menu_nav justify-content-center">
-								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
-								<li class="nav-item"><a class="nav-link" href="services.html">Services</a>
-								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="price.html">Pricing</a> 
-										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-									</ul>
-								</li> 
-								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-										<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-									</ul>
-								</li> 
-								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li class="nav-item"><a href="#" class="tickets_btn">Free Trial</a></li>
-							</ul>
-						</div> 
-					</div>
-            	</nav>
+    <!--================Header Menu Area =================-->
+    <header class="header_area">
+        <div class="main_menu">
+           <nav class="navbar navbar-expand-lg navbar-light">
+               <div class="container box_1620">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <a class="navbar-brand logo_h" href="#"><span><b style="color: #fff">PRINT-DISINI</b></span> 
+                    <!-- <img src="{% static "users/img/logo.png" %} " alt=""> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <!-- Collect the nav links, forms, and other content for toggling -->
+             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                 <ul class="nav navbar-nav menu_nav justify-content-center">
+                    <li class="nav-item active"><a class="nav-link" href="index.html" style="color: #007bff">_</a></li> 
+                    <!-- <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>  -->
+<!--                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a>
+                        <li class="nav-item submenu dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+                           <ul class="dropdown-menu">
+                              <li class="nav-item"><a class="nav-link" href="price.html">Pricing</a> 
+                                  <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+                              </ul>
+                          </li> 
+                          <li class="nav-item submenu dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                           <ul class="dropdown-menu">
+                              <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                              <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+                          </ul>
+                      </li> 
+                      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item"><a href="{% url 'login' %}" class="tickets_btn">Login</a></li>
+                </ul>
+<!--                             <ul class="nav navbar-nav navbar-right">
+                                <li class="nav-item"><a href="#" class="tickets_btn">Register</a></li>
+                            </ul>
+                        -->                     </div> 
+                    </div>
+                </nav>
             </div>
         </header>
         <!--================Header Menu Area =================-->
         
         <!--================Home Banner Area =================-->
-        <section class="home_banner_area">
+        <section class="home_banner_area" style="background-image: -webkit-linear-gradient(0deg, #007bff 0%, #62ddff 100%)">
             <div class="banner_inner">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-5">
-							<div class="banner_content">
-								<h2>Mass People <br />Oriented Software</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. sed do eiusmod tempor incididunt.</p>
-								<a class="banner_btn" href="#">Get Started</a>
-								<a class="banner_btn2" href="#">Download</a>
-							</div>
-						</div>
-						<div class="col-lg-7">
-							<div class="home_left_img">
-								<img class="img-fluid" src="{% static "users/img/banner/home-left-1.png" %} " alt="">
-							</div>
-						</div>
-					</div>
-				</div>
+                <div class="container">
+                   <div class="row">
+                      <div class="col-lg-5">
+                         <div class="banner_content">
+                            <h2>Online Printing</h2><h4>Open from Sun-Thurs(day) at 19.00-21.00 WIB</h4>
+                            <p>Endingnya Tugas Kuliah.<br/>
+                            Send file tugasmu hari ini dan hasilnya dapat diambil mulai besok sejak jam 7 pagi. Cek dulu lokasi pengambilan pada list kampus yang tersedia ya!</p>
+                            <a class="banner_btn" href="{% url 'login' %}">Login</a>
+                            <a class="banner_btn2" href="{% url 'register' %}">Register</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                     <div class="home_left_img" style="padding-top:130px; padding-bottom: 60px; padding-left: 60px;  max-width: 70%;">
+                        <img class="img-fluid" src="{% static "users/img/banner/home.png" %} " alt="">
+                    </div>
+                </div>
             </div>
-        </section>
-        <!--================End Home Banner Area =================-->
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
         
         <!--================Work Area =================-->
-        <section class="work_area p_120">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>How It work for you</h2>
-        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        		</div>
-        		<div class="work_inner row">
-        			<div class="col-lg-4">
-        				<div class="work_item">
-        					<i class="lnr lnr-screen"></i>
-        					<a href="#"><h4>Stunning Visuals</h4></a>
-        					<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4">
-        				<div class="work_item">
-        					<i class="lnr lnr-code"></i>
-        					<a href="#"><h4>Stunning Visuals</h4></a>
-        					<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4">
-        				<div class="work_item">
-        					<i class="lnr lnr-clock"></i>
-        					<a href="#"><h4>Stunning Visuals</h4></a>
-        					<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
+        <section class="work_area p_120" style="padding-top:60px;">
+        	
+            <div class="container" style="color: #000;">
+                <div class="row footer_inner">
+                    <div class="col-lg-5 col-sm-6">
+                        <aside class="f_widget ab_widget">
+                            <div class="left_side_text">
+                                <h3>About Me</h3>
+                            </div>
+                            <p>Print Disini adalah penyedia jasa percetakan kertas HVS (A4/F4) sekaligus keperluan jilid mika. Kami hanya menerima file dalam bentuk PDF (.pdf) agar hasil tata letak penulisan tidak berubah ketika tercetak.
+                                
+                            </p>
+                            
+                        </aside>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <aside class="f_widget ab_widget">
+                            <div class="left_side_text">
+                                <h3>Price</h3>
+                            </div>
+                            <p>Harga cetak file warna-warni semurah harga cetak file hitam-putih. Cukup Rp300,-/lembar dan Rp3000,-/jilid (jika butuh dijilidkan).
+                                <br/>
+                                <br/>
+                                List Kampus:<br/>
+                                • FST, Universitas Airlangga <br/> • (coming soon)
+                            </p>
+                            
+                        </aside>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <aside class="f_widget social_widget">
+                            <div class="left_side_text">
+                                <h3>Contact</h3>
+                            </div>
+                            <p>Email : printdisini2020@gmail.com <br/> CS : 081233752188</p>
+                            <div class="left_side_text">
+                                <h3>Follow Me</h3>
+                            </div>
+                            <p>Let us be social</p>
+                            <ul class="list">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+<!--                             <p>Stay updated with our latest trends</p>
+                            <div id="mc_embed_signup">
+                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                    <div class="input-group d-flex flex-row">
+                                        <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>      
+                                    </div>              
+                                    <div class="mt-10 info"></div>
+                                </form>
+                            </div> -->
+                        </aside>
+                    </div>
+<!--                     <div class="col-lg-2">
+                        <aside class="f_widget social_widget">
+                            <div class="left_side_text">
+                                <h3>Follow Me</h3>
+                            </div>
+                            <p>Let us be social</p>
+                            <ul class="list">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+                        </aside>
+                    </div> -->
+                </div>
+            </div>
         </section>
         <!--================End Work Area =================-->
         
         <!--================Made Life Area =================-->
-        <section class="made_life_area p_120">
+<!--         <section class="made_life_area p_120">
         	<div class="container">
         		<div class="made_life_inner">
 					<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -216,10 +265,10 @@
         		</div>
         	</div>
         </section>
-        <!--================End Made Life Area =================-->
+ -->        <!--================End Made Life Area =================-->
         
         <!--================Screen Area =================-->
-        <section class="screen_area text-center p_120">
+        <!-- <section class="screen_area text-center p_120">
         	<div class="container">
         		<div class="main_title">
         			<h2>Unique Screens that work perfectly</h2>
@@ -227,11 +276,11 @@
         		</div>
         		<img class="img-fluid" src="img/banner/home-left-1.png" alt="">
         	</div>
-        </section>
+        </section> -->
         <!--================End Screen Area =================-->
         
         <!--================Made Life Area =================-->
-        <section class="made_life_area p_120">
+        <!-- <section class="made_life_area p_120">
         	<div class="container">
         		<div class="made_life_inner">
 					<div class="row made_life_text">
@@ -251,11 +300,11 @@
 					</div>
         		</div>
         	</div>
-        </section>
+        </section> -->
         <!--================End Made Life Area =================-->
         
         <!--================Price Area =================-->
-        <section class="price_area p_120">
+        <!-- <section class="price_area p_120">
         	<div class="container">
         		<div class="main_title">
         			<h2>Choose Your Price Plan</h2>
@@ -321,11 +370,11 @@
         			</div>
         		</div>
         	</div>
-        </section>
+        </section> -->
         <!--================End Price Area =================-->
         
         <!--================Testimonials Area =================-->
-        <section class="testimonials_area p_120">
+        <!-- <section class="testimonials_area p_120">
         	<div class="container">
         		<div class="main_title">
         			<h2>Feedback from Customers</h2>
@@ -454,11 +503,11 @@
         			</div>
         		</div>
         	</div>
-        </section>
+        </section> -->
         <!--================End Testimonials Area =================-->
         
         <!--================Made Life Area =================-->
-        <section class="made_life_area made_white p_120">
+        <!-- <section class="made_life_area made_white p_120">
         	<div class="container">
         		<div class="made_life_inner">
 					<div class="row made_life_text">
@@ -478,11 +527,11 @@
 					</div>
         		</div>
         	</div>
-        </section>
+        </section> -->
         <!--================End Made Life Area =================-->
         
         <!--================Impress Area =================-->
-        <section class="impress_area p_120">
+        <!-- <section class="impress_area p_120">
         	<div class="container">
         		<div class="impress_inner">
 					<h2>Got Impressed to our features?</h2>
@@ -490,11 +539,11 @@
 					<a class="banner_btn2" href="#">Request Free Demo</a>
         		</div>
         	</div>
-        </section>
+        </section> -->
         <!--================End Impress Area =================-->
         
         <!--================Footer Area =================-->
-        <footer class="footer_area p_120">
+        <!-- <footer class="footer_area p_120">
         	<div class="container">
         		<div class="row footer_inner">
         			<div class="col-lg-5 col-sm-6">
@@ -502,17 +551,16 @@
         					<div class="f_title">
         						<h3>About Me</h3>
         					</div>
-        					<p>Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills,</p>
-        					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        					<p>Print Disini adalah penyedia jasa percetakan kertas (A4/F4) sekaligus keperluan jilid mika. Kami hanya menerima file dalam bentuk PDF (.pdf) agar hasil tata letak penulisan tidak berubah ketika tercetak.</p>
+        					
         				</aside>
         			</div>
         			<div class="col-lg-5 col-sm-6">
         				<aside class="f_widget news_widget">
         					<div class="f_title">
-        						<h3>Newsletter</h3>
+        						<h3>Contact</h3>
         					</div>
+                            <p>Email : printdisini2020@gmail.com <br/> CS : 081233752188</p>
         					<p>Stay updated with our latest trends</p>
         					<div id="mc_embed_signup">
                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
@@ -541,7 +589,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         			</div>
         		</div>
         	</div>
-        </footer>
+        </footer> -->
         <!--================End Footer Area =================-->
         
         

@@ -15,6 +15,7 @@ class PemesananForm(forms.ModelForm):
                     attrs = {
                         'class' : '',
                         'type'  : 'file',
+                        'onchange' : 'document.getElementById("prepend-small-btn").value = files[0].name;',
                     }
                 )   
         )
@@ -88,6 +89,7 @@ class PemesananUpdateForm(forms.ModelForm):
                     attrs = {
                         'class' : 'form-control',
                         'type'  : 'file',
+                        'onchange' : 'document.getElementById("prepend-small-btn").value = files[0].name;',
                     }
                 )   
         )
