@@ -1,0 +1,47 @@
+{% extends "app/home.html" %}
+
+
+{% block content %}
+<a class="btn btn-primary" href="{% url 'app-create' %}">Tambah</a>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nama File</th>
+      <th scope="col">Jenis Cetak</th>
+      <th scope="col">Waktu Pengambilan</th>
+      <th scope="col">Tempat Pengambilan</th>
+      <th scope="col">Banyak Halaman</th>
+      <th scope="col">Harga</th>
+      <th scope="col">Nama Pemesan</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for pesan in pemesanans %}
+        
+      
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td><a href="{% url 'app-detail' pesan.id %}">{{pesan.nama_file}}</a></td>
+        <td>{{pesan.print_id.jenis_print}}</td>
+        <td>{{pesan.waktu_pengambilan}}</td>
+        <td>{{pesan.pengambilan_id.tempat_pengambilan}}</td>
+        <td>{{pesan.banyak_halaman}}</td>
+        <td>Rp.{{pesan.harga_bayar}}</td>
+        <td>{{pesan.pengguna}}</td>
+        <td><a href="{% url 'app-detail' pesan.id %}">Detail</a></td>
+        <td><a href="{% url 'app-delete' pesan.id %}">Delete</a></td>
+
+
+        
+      </tr>
+
+      {% endfor %}
+  </tbody>
+</table>
+      </tbody>
+    </table>
+{% endblock content %}

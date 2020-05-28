@@ -1,0 +1,33 @@
+{% extends "app/home.html" %}
+
+{% block content %}
+
+	<div class="sparkline12-list">
+	    <div class="text-center m-b-md custom-login">
+	  <h2 style="color: #0f63bd "><B>INPUT BUKTI PEMBAYARAN</B></h2>
+	</div>
+
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="form-group-inner">
+	        <div class="row">
+	            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+	                <label class="login2 pull-right pull-right-pro">{{form.bukti.label}}</label>
+	            </div>
+	            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+	                <div class="file-upload-inner ts-forms">
+	                    <div class="input prepend-small-btn">
+	                        <div class="file-button" style="background-color: #0f63bd">
+	                        	Browse
+	                           {{form.bukti}}
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+
+	    <button type="submit" class="btn btn-primary">Submit</button>
+
+	</form>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "app/home.html" %}
+
+
+{% block content %}
+  
+<h1>Detail Check Out</h1>
+
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Bukti</th>
+    <th>Status</th>
+  </thead>
+  <tbody>
+    <td>{{object.pemesanan_id}}</td>
+    <td>{{object.bukti}}</td>
+    <td>{{object.status_bayar}}</td>
+  </tbody>
+</table>
+
+{% endblock content %}

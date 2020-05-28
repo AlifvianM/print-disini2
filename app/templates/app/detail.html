@@ -1,0 +1,41 @@
+{% extends "app/home.html" %}
+
+
+{% block content %}
+  
+    <h1>Detail</h1>
+
+      <table class="table">
+     <thead>
+       <tr>
+              <th scope="col">No</th>
+              <th scope="col">Nama File</th>
+              <th scope="col">Banyak Halaman</th>
+              <th scope="col">Status</th>
+              <th scope="col">Harga</th>
+              <th scope="col">Status Pemnbayaran</th>
+              <th scope="col">Bukti Pembayaran</th>
+            </tr>
+        <tbody>
+          <td>{{object.id}}</td>
+          <td>{{object.nama_file}}</td>
+          <td>{{object.banyak_halaman}}</td>
+          <td>{{object.status_id}}</td>
+          <td>Rp.{{object.harga_bayar}}</td>
+          <td>{{object.status_bayar}}</td>
+          <td>{{object.bukti}}</td>
+          {% if object.status_bayar == 'Belum Dibayar' %}
+            <td><a href="{% url 'app-update' object.id %}">Bayar</a></td>
+          {% endif %}
+
+        
+
+        </tbody>
+     </thead>
+    </table>
+
+    
+
+    <a href="{% url 'app-list' %}">Beranda</a>
+
+{% endblock content %}

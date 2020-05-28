@@ -1,0 +1,117 @@
+{% extends "app/home.html" %}
+{% block content %}
+<div class="sparkline12-list">
+    <div class="text-center m-b-md custom-login">
+  <h2 style="color: #0f63bd "><B>INPUT FILE</B></h2>
+</div>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+   <div class="form-group-inner">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <label class="login2 pull-right pull-right-pro">{{form.nama_file.label}}</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                {{form.nama_file}}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group-inner">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <label class="login2 pull-right pull-right-pro">{{form.file.label}}</label>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="file-upload-inner ts-forms">
+                    <div class="input prepend-small-btn">
+                        <div class="file-button" style="background-color: #0f63bd">
+                            Browse
+                            {{form.file}}
+                        </div>
+                        <!-- <input type="text" id="prepend-small-btn" placeholder="no file selected"> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group-inner">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <label class="login2 pull-right pull-right-pro">{{form.print_id.label}}</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                {{form.print_id}}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group-inner data-custon-pick" id="data_1">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <label class="login2 pull-right pull-right-pro">{{form.jilid_id.label}}</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                {{form.jilid_id}}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group-inner data-custon-pick" id="data_1">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <label class="login2 pull-right pull-right-pro">{{form.waktu_pengambilan.label}}</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                
+                    {{form.waktu_pengambilan}}
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group-inner">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <label class="login2 pull-right pull-right-pro">{{form.pengambilan_id.label}}</label>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                <div class="form-select-list">
+                    {{form.pengambilan_id}}
+                  </select>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <div class="form-group-inner" id="data_1">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <label class="login2 pull-right pull-right-pro">{{form.copy.label}}</label>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="touchspin-inner">
+                {{form.copy}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="form-group-inner">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <label class="login2 pull-right pull-right-pro">{{form.status_id.label}}</label>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            {{form.status_id}}
+        </div>
+    </div>
+</div > -->
+
+    <button class="btn btn-primary" type="submit">SUBMIT</button>
+    </form>
+{% endblock content %}
+
