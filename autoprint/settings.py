@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
+# import django_heroku
 
 
 
@@ -152,7 +152,7 @@ EMAIL_HOST_PASSWORD = 'autoprint'
 
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 
 

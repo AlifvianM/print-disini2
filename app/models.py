@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -43,17 +44,20 @@ class Pemesanan(models.Model):
 		('Menunggu Pembayaran' , 'menunggu'),
 		('Belum Dibayar', 'belum')
 	)
+	JILID = (
+			('Ya', 'ya'),
+			('Tidak', 'tidak'),
+		)
 	pengguna 				= models.ForeignKey(User, on_delete=models.CASCADE)
-	nama_file 				= models.CharField(max_length=255)
-	file 					= models.FileField(upload_to='documents/')
+	nama_file 				= models.CharField(max_length=255, null=True, blank=True)
+	# file 					= models.FileField(upload_to='documents/')
 	print_id				= models.ForeignKey(Print, on_delete=models.CASCADE)
-	jilid_id 				= models.ForeignKey(Jilid, on_delete=models.CASCADE)
+	jilid					= models.CharField(max_length=255, default='Ya')
 	status_id				= models.ForeignKey(Status, on_delete=models.CASCADE, default='1')
 	created_at				= models.DateTimeField(auto_now_add=True)
 	update_at 				= models.DateTimeField(auto_now=True)
 	waktu_pengambilan 		= models.DateField()
 	pengambilan_id 			= models.ForeignKey(Pengambilan, on_delete=models.CASCADE)
-	banyak_halaman			= models.IntegerField(default=0, null=True, blank=True)
 	copy 					= models.IntegerField(default=1)
 	harga_bayar				= models.FloatField(default=0)
 	status_bayar 			= models.CharField(max_length=255, choices=STATUS, default='Belum Dibayar')
@@ -89,6 +93,37 @@ class Pemesanan(models.Model):
 		return reverse('app-detail',
 		 kwargs={'pk':self.pk})
 
+
+
+
+class FilePemesanan(models.Model):
+	pemesanan_id 	= models.ForeignKey(Pemesanan, on_delete = models.CASCADE)
+	file 		 	= models.FileField()
+	nama_file 		= models.CharField(max_length=255, null=True, blank=True)
+	banyak_halaman	= models.IntegerField(default=0, null=True, blank=True)
+	harga 			= models.FloatField(default=0)
+
+
+	def filename(self):
+		self.nama_file = os.path.basename(self.file.name)
+		return self.nama_file
+
+	# def get_absolute_url(self):
+	# 	return reverse('app-detail',
+	# 	 kwargs={'pk':self.pemesanan_id.id})
+
+	def save(self, *args, **kwargs):
+		base_dir =settings.MEDIA_ROOT    
+		# my_file = os.path.join(base_dir, str(self.file))
+		pdf = PyPDF2.PdfFileReader(self.file)
+		self.banyak_halaman = pdf.getNumPages()
+		self.harga = self.banyak_halaman * self.pemesanan_id.print_id.harga
+
+
+		super(FilePemesanan, self).save(*args, **kwargs)
+
+	def __str__(self):
+		return "ID {}. {}, {}. ".format(self.id, 'Pemesanan ID : ', self.pemesanan_id)
 
 class CheckOut(models.Model):
 	STATUS = (

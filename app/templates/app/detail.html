@@ -1,41 +1,96 @@
 {% extends "app/home.html" %}
 
 
-{% block content %}
-  
-    <h1>Detail</h1>
 
-      <table class="table">
-     <thead>
-       <tr>
-              <th scope="col">No</th>
-              <th scope="col">Nama File</th>
-              <th scope="col">Banyak Halaman</th>
-              <th scope="col">Status</th>
-              <th scope="col">Harga</th>
-              <th scope="col">Status Pemnbayaran</th>
-              <th scope="col">Bukti Pembayaran</th>
-            </tr>
-        <tbody>
-          <td>{{object.id}}</td>
-          <td>{{object.nama_file}}</td>
-          <td>{{object.banyak_halaman}}</td>
-          <td>{{object.status_id}}</td>
-          <td>Rp.{{object.harga_bayar}}</td>
-          <td>{{object.status_bayar}}</td>
-          <td>{{object.bukti}}</td>
-          {% if object.status_bayar == 'Belum Dibayar' %}
-            <td><a href="{% url 'app-update' object.id %}">Bayar</a></td>
-          {% endif %}
+ {% block content %}
 
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- DataTales Example -->
+
+  <div class="card shadow mb-4 mt-3">
+    <div class="card-body">
+      <table>
+        {% for setor in setors %}
+          
+        <tr>
+          <td>ID Pemesanan </td>
+          <td>:</td>
+          <td>{{setor.id}}</td>
+        </tr>
+        <tr>
+          <td>Atas Nama </td>
+          <td>:</td>
+          <td>{{setor.pengguna.first_name}}</td>
+        </tr>
+        <tr>
+          <td>Jenis Print</td>
+          <td>:</td>
+          <td>{{setor.print_id.jenis_print}}</td>
+        </tr>
+        <tr>
+          <td>Jilid </td>
+          <td>:</td>
+          <td>{{setor.jilid}}</td>
+        </tr>
+        <tr>
+          <td>Copy </td>
+          <td>:</td>
+          <td>{{setor.copy}} Kali Cetak</td>
+        </tr>
+        <tr>
+          <td>Waktu Ambil </td>
+          <td>:</td>
+          <td>{{setor.waktu_pengambilan|date:"d F Y"}}</td>
+        </tr>
+        <tr>
+          <td>Harga Bayar</td>
+          <td>:</td>
+          <td>{{setor.harga_bayar}}</td>
+        </tr>
+        <a class="btn btn-primary" href="{% url 'app-update' setor.id %}">Bayar</a>
         
+        {% endfor %}
+      </table>
+      <div class="table-responsive mt-5">
+        <table class="table table-bordered" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Pesan ID</th>
+              <th>Nama File</th>
+              <td>Banyak Halaman</td>
+              <th>Harga</th>
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for pesan in pesans %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{pesan.id}}</td>
+              <td>{{pesan.filename}}</td>
+              <td>{{pesan.banyak_halaman}} Lembar</td>
+              <td>Rp. {{pesan.harga}}</td>
+              <!-- <td><a class="btn btn-primary" href="">Ubah</a></td> -->
+            </tr>
+            {# <td><a class="btn btn-succes" href="{% url 'app-cetakpesandetail' pesan.id %}">Cetak</a></td> #}
+            {% endfor %}
+            <tr>
+              <td><b>total</b></td>
+              <td><b>Rp. {{total}}</b></td><br>
+              
+            </tr>
+           
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    </div>
+ 
 
-        </tbody>
-     </thead>
-    </table>
-
-    
-
-    <a href="{% url 'app-list' %}">Beranda</a>
-
+</div>
+  
 {% endblock content %}

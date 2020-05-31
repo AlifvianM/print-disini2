@@ -7,11 +7,13 @@ from django.views.generic import (
     DeleteView,
     TemplateView,
 )
+from django.db.models import Avg, Sum
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Pemesanan, CheckOut
-from .forms import PemesananForm, CheckOutForm, PemesananUpdateForm
+from .models import Pemesanan, CheckOut, FilePemesanan
+from .forms import PemesananForm, CheckOutForm, PemesananUpdateForm, FilePemesananForm
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 from django.views.generic import FormView
 
@@ -50,11 +52,22 @@ class PemesananCreateView(CreateView, LoginRequiredMixin, UserPassesTestMixin):
     form_class = PemesananForm
     template_name = "app/create.html"
 
-
+    # def post(self, request, *args, **kwargs):
+    #     form_class = self.get_form_class()
+    #     form = self.get_form(form_class)
+    #     files = request.FILES.getlist('file')
+    #     if form.is_valid():
+    #         for f in files:
+    #             pdf = PyPDF2.PdfFileReader(obj.file.path)
+    #             print(pdf)
+    #         return self.form_valid(form)
+    #     else:
+    #         return self.form_invalid(form)
 
     def form_valid(self, form):
-    	form.instance.pengguna = self.request.user
-    	return super().form_valid(form)	
+        form.instance.pengguna = self.request.user
+        return super().form_valid(form)	
+
 
 
 class PemesananUpdateView(UpdateView):
@@ -87,53 +100,23 @@ class PemesananDeleteView(DeleteView):
 
 
 class PemesananDetailView(DetailView, LoginRequiredMixin, UserPassesTestMixin):
-    model = Pemesanan
+    model = FilePemesanan
     template_name = "app/detail.html"
-    queryset = Pemesanan.objects.all()
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     obj = Pemesanan.objects.get(id=self.kwargs['pk'])
-    #     # print(obj.file)
-    #     pdf = PyPDF2.PdfFileReader(obj.file.path)
-    #     info = pdf.getNumPages()
-    #     # print(info)
-
-
-
-    #     total = info * 10
-    #     # print(total)
-
-    #     context['total'] = total
-
-    #     return context
-
-    def get_object(self):
-        obj = super().get_object()
-        print(obj.file.path)
-        print(obj.banyak_halaman)
-        hal = obj.banyak_halaman
-        print(hal*obj.harga_bayar)
-        pdf = PyPDF2.PdfFileReader(obj.file.path)
-        info = pdf.getNumPages()
-        obj.banyak_halaman = info
-        # obj.save()
-        obj.harga_bayar = (obj.banyak_halaman * obj.print_id.harga * obj.copy) + obj.jilid_id.harga_jilid
-        print(obj.harga_bayar)
-
-        if obj.bukti:
-            obj.status_bayar = 'Menunggu Konfirmasi Admin'
-        else:
-            pass
-
-        obj.save()
-
-        return obj
+    # queryset = Pemesanan.objects.all()
 
     def get_context_data(self, **kwargs):
-        context = super(PemesananDetailView, self).get_context_data(**kwargs)
-        # context['comments'] = Comment.objects.filter(post=self.object)
-        context['form'] = CheckOutForm
+        context = super().get_context_data(**kwargs)
+        context['pesans']=FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk'])
+        context['setors']=Pemesanan.objects.filter(id=self.kwargs['pk'])
+        obj = super(PemesananDetailView, self).get_object(queryset = context['setors'])
+        print(obj)
+        if obj.jilid == 'Ya':
+            total = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00
+            context['total'] = total + 3000
+            obj.harga_bayar = context['total']
+            obj.save()
+        else:
+            context['total'] = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00  
         return context
 
 class FormCheckOut(CreateView):
@@ -169,3 +152,40 @@ class CheckDetailView(DetailView):
         obj.save()
 
         return obj
+
+
+
+
+
+
+
+def create_to_feed(request,*args, **kwargs):
+    # user = request.user
+    if request.method == 'POST':
+        form = PemesananForm(request.POST)
+        file_form = FilePemesananForm(request.POST, request.FILES)
+        files = request.FILES.getlist('file') #field name in model
+        if form.is_valid() and file_form.is_valid():
+            feed_instance = form.save(commit=False)
+            feed_instance.pengguna_id = request.user.id
+            feed_instance.save()
+            for f in files:
+                file_instance = FilePemesanan(file=f, pemesanan_id=feed_instance)
+                file_instance.save()
+            return redirect(reverse('app-detail',kwargs = {'pk': file_instance.pemesanan_id.id}))
+    else:
+        form = PemesananForm()
+        file_form = FilePemesananForm()
+
+    context = {
+        'form':form,
+        'file_forms': file_form,
+    }
+    return render(request, 'app/create.html', context)
+
+
+
+
+
+
+

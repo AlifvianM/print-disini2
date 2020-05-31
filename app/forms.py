@@ -1,23 +1,29 @@
 from django import forms
-from .models import Pemesanan, CheckOut, Print, Jilid, Pengambilan, Status
+from .models import Pemesanan, CheckOut, Print, Jilid, Pengambilan, Status, FilePemesanan
 
 class PemesananForm(forms.ModelForm):
-    nama_file = forms.CharField(
-            widget= forms.TextInput(
-                    attrs = {
-                        'class' : 'form-control'
-                    }
-                )
-        )
+    # nama_file = forms.CharField(
+    #         widget= forms.TextInput(
+    #                 attrs = {
+    #                     'class' : 'form-control'
+    #                 }
+    #             )
+    #     )
 
-    file = forms.FileField(
-            widget=forms.FileInput(
-                    attrs = {
-                        'class' : '',
-                        'type'  : 'file',
-                        'onchange' : 'document.getElementById("prepend-small-btn").value = files[0].name;',
-                    }
-                )   
+    # file = forms.FileField(
+    #         widget=forms.ClearableFileInput(
+    #                 attrs = {
+    #                     'multiple': True,
+    #                     'class' : '',
+    #                     'type'  : 'file',
+    #                     'onchange' : 'document.getElementById("prepend-small-btn").value = files[0].name;',
+    #                 }
+    #             )   
+    #     )
+
+    JILID = (
+            ('Ya', 'ya'),
+            ('Tidak', 'tidak'),
         )
 
     print_id = forms.ModelChoiceField(queryset=Print.objects.all(), 
@@ -28,7 +34,7 @@ class PemesananForm(forms.ModelForm):
                 ), label='Jenis Cetak'   
         )
 
-    jilid_id = forms.ModelChoiceField(queryset=Jilid.objects.all(), 
+    jilid   = forms.ChoiceField(choices=JILID,
             widget=forms.Select(
                     attrs = {
                         'class' : 'form-control',
@@ -56,7 +62,8 @@ class PemesananForm(forms.ModelForm):
     copy = forms.IntegerField(
             widget=forms.NumberInput(
                     attrs={
-                        'class' : 'form-control'
+                        'class' : 'form-control',
+                        'value' : 1
                     }
                 )
         )
@@ -72,10 +79,10 @@ class PemesananForm(forms.ModelForm):
     class Meta:
         model = Pemesanan
         fields = (
-            'nama_file',
-        	'file',
+            # 'nama_file',
+        	# 'file',
         	'print_id',
-            'jilid_id',
+            'jilid',
         	'waktu_pengambilan',
         	'pengambilan_id',
             'copy',
@@ -99,6 +106,19 @@ class PemesananUpdateForm(forms.ModelForm):
             'bukti',
             )
     
+
+class FilePemesananForm(forms.ModelForm):
+    class Meta:
+        model = FilePemesanan
+        fields = (
+            'file',
+            )
+        widgets = {
+            'file': forms.ClearableFileInput(attrs={'multiple': True}),
+        }
+    
+
+
 
 
 class CheckOutForm(forms.ModelForm):

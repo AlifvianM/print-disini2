@@ -4,9 +4,10 @@
     <div class="text-center m-b-md custom-login">
         <h2 style="color: #0f63bd "><B>INPUT FILE</B></h2>
     </div>
+
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group-inner">
+       <!--  <div class="form-group-inner">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="login2 pull-right pull-right-pro">{{form.nama_file.label}}</label>
@@ -15,9 +16,9 @@
                     {{form.nama_file}}
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="form-group-inner">
+        <!-- <div class="form-group-inner">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                     <label class="login2 pull-right pull-right-pro">{{form.file.label}}</label>
@@ -29,12 +30,12 @@
                                 Browse
                                 {{form.file}}
                             </div>
-                            <input type="text" id="prepend-small-btn" disabled placeholder="no file selected">
+                            <input type="text" id="prepend-small-btn" disabled placeholder="Masukkan File PDF">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group-inner">
             <div class="row">
@@ -50,10 +51,10 @@
         <div class="form-group-inner" id="data_1">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <label class="login2 pull-right pull-right-pro">{{form.jilid_id.label}}</label>
+                    <label class="login2 pull-right pull-right-pro">{{form.jilid.label}}</label>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                    {{form.jilid_id}}
+                    {{form.jilid}}
                 </div>
             </div>
         </div>
@@ -111,10 +112,33 @@
         </div>
     </div >
 
+
+
+<div class="form-group-inner">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <label class="login2 pull-right pull-right-pro">{{file_forms.file.label}}</label>
+                </div>
+                <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                    <div class="file-upload-inner ts-forms">
+                        <div class="input prepend-small-btn">
+                            <div class="file-button" style="background-color: #0f63bd">
+                                Browse
+                                {{file_forms.file}}
+                            </div>
+                            <!-- <input type="text" id="prepend-small-btn" disabled placeholder="Masukkan File PDF"> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     <div class="text-center m-b-md custom-login">
         <button class="btn btn-primary" type="submit">SUBMIT</button>
     </div>
 
 </form>
 {% endblock content %}
+
 

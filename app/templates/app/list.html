@@ -6,8 +6,9 @@
       <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nama File</th>
+      <th scope="col">No</th>
+      <!-- <th scope="col">Nama File</th> -->
+      <th scope="col">ID</th>
       <th scope="col">Jenis Cetak</th>
       <th scope="col">Waktu Pengambilan</th>
       <th scope="col">Tempat Pengambilan</th>
@@ -25,7 +26,8 @@
       
       <tr>
         <td>{{forloop.counter}}</td>
-        <td><a href="{% url 'app-detail' pesan.id %}">{{pesan.nama_file}}</a></td>
+        <!-- <td><a href="{% url 'app-detail' pesan.id %}">{{pesan.nama_file}}</a></td> -->
+        <td>{{pesan.id}}</td>
         <td>{{pesan.print_id.jenis_print}}</td>
         <td>{{pesan.waktu_pengambilan}}</td>
         <td>{{pesan.pengambilan_id.tempat_pengambilan}}</td>
