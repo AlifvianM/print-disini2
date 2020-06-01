@@ -5,7 +5,7 @@ from .models import Print, Jilid, Pemesanan, Pengambilan, Status, CheckOut, File
 
 class PemesananModelAdmin(admin.ModelAdmin):
 	list_display = (
-			'nama_file',
+			# 'nama_file',
 			# 'file',
 			'print_id',
 			# 'jilid_id',

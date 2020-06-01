@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from users import views as users_views
 from users.forms import MyLoginView, NewPasswordResetView, NewPasswordResetConfirmView
-from users.views import signup, activate
+from users.views import signup, activate, register_success
 
 urlpatterns = [
 	path('', include('app.urls')),
@@ -36,6 +36,7 @@ urlpatterns = [
         ), name='password_reset_confirm' ),
     path('accounts/password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name='password_reset_done'),
     path('accounts/reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), name= 'password_reset_complete'),
+    path('register/success/', register_success, name = 'register_success'),
     path('register/', signup, name = 'register'),
     re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', activate, name='activate'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name='logout'),

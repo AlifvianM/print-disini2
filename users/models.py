@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
 	user 		= models.OneToOneField(User, on_delete = models.CASCADE)
-	image 		= models.ImageField(default='default_profile.jpg', upload_to='profile_pics', blank=True, null=True)
-	NIP			= models.CharField(max_length=255, blank=True)
-	NIK			= models.CharField(max_length=255, blank=True)
+	# image 		= models.ImageField(default='default_profile.jpg', upload_to='profile_pics', blank=True, null=True)
+	NIM			= models.CharField(max_length=255, blank=True)
+	fakultas	= models.CharField(max_length=255, blank=True)
 	# domisili	= models.CharField(max_length=255)
 	# fakultas	= models.CharField(max_length=255)
 

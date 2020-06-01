@@ -14,6 +14,7 @@
       <th scope="col">Tempat Pengambilan</th>
       <th scope="col">Banyak Halaman</th>
       <th scope="col">Harga</th>
+      <th scope="col">Status Pembayaran</th>
       <th scope="col">Nama Pemesan</th>
 
 
@@ -31,8 +32,9 @@
         <td>{{pesan.print_id.jenis_print}}</td>
         <td>{{pesan.waktu_pengambilan}}</td>
         <td>{{pesan.pengambilan_id.tempat_pengambilan}}</td>
-        <td>{{pesan.banyak_halaman}}</td>
+        <td>{{pesan.status_id}}</td>
         <td>Rp.{{pesan.harga_bayar}}</td>
+        <td>{{pesan.status_bayar}}</td>
         <td>{{pesan.pengguna}}</td>
         <td><a href="{% url 'app-detail' pesan.id %}">Detail</a></td>
         <td><a href="{% url 'app-delete' pesan.id %}">Delete</a></td>

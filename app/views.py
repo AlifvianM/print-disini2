@@ -26,6 +26,7 @@ import PyPDF2, io
 @login_required
 def UserPost(request):
     user_post = Pemesanan.objects.filter(pengguna = request.user).order_by('-created_at')
+    print(user_post)
     template = 'app/list.html'
     return render(request, template, {
                 'pemesanans':user_post
@@ -100,7 +101,7 @@ class PemesananDeleteView(DeleteView):
 
 
 class PemesananDetailView(DetailView, LoginRequiredMixin, UserPassesTestMixin):
-    model = FilePemesanan
+    model = Pemesanan
     template_name = "app/detail.html"
     # queryset = Pemesanan.objects.all()
 
@@ -115,6 +116,8 @@ class PemesananDetailView(DetailView, LoginRequiredMixin, UserPassesTestMixin):
             context['total'] = total + 3000
             obj.harga_bayar = context['total']
             obj.save()
+            if obj.bukti:
+                obj.status_bayar = 'Menunggu Pembayaran'
         else:
             context['total'] = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00  
         return context

@@ -67,7 +67,13 @@ class PemesananForm(forms.ModelForm):
                     }
                 )
         )
-
+    keterangan = forms.CharField(
+            widget= forms.TextInput(
+                    attrs = {
+                        'class' : 'form-control'
+                    }
+                )
+        )
     # status_id = forms.ModelChoiceField(queryset=Status.objects.all(), 
     #         widget=forms.Select(
     #                 attrs = {
@@ -88,6 +94,7 @@ class PemesananForm(forms.ModelForm):
             'copy',
         	# 'harga_bayar',
         	# 'status_id',
+            'keterangan',
         	)
 
 class PemesananUpdateForm(forms.ModelForm):

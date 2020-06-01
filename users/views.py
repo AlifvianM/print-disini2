@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required 
-from .forms import UserRegisterForm, UserUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileForm
 from django.contrib.auth import login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -50,13 +50,21 @@ def register(request):
 #     }
 #     return render(request, 'users/profile.html', context)
 
+
+def register_success(request):
+    return render(request, 'users/register_succes.html')
+
 def signup(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
+        p_form = ProfileForm(request.POST)
+        if form.is_valid() and p_form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
             user.save()
+            profile = p_form.save(commit=False)
+            profile.user = user
+            profile.save()
             current_site = get_current_site(request)
             mail_subject = 'Activate your blog account.'
             message = render_to_string('users/acc_active_email.html', {
@@ -70,10 +78,12 @@ def signup(request):
                         mail_subject, message, to=[to_email]
             )
             email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
+            # return HttpResponse('Please confirm your email address to complete the registration')
+            return redirect('register_success')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+        p_form = ProfileForm()
+    return render(request, 'users/register.html', {'form': form, 'p_form':p_form})
 
 def activate(request, uidb64, token):
     try:

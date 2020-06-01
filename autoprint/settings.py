@@ -150,7 +150,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'printdisini2020@gmail.com'
 EMAIL_HOST_PASSWORD = 'autoprint'
 
-
+HASHID_FIELD_SALT = "bismillahirrohmanirrohim semoga berkah untuk biaya masa depan"
 
 # django_heroku.settings(locals())
 

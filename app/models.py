@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 import os
 import PyPDF2, io
+from django.utils.text import slugify
+from hashid_field import HashidField, HashidAutoField
 
 
 # Create your models here.
@@ -49,8 +51,6 @@ class Pemesanan(models.Model):
 			('Tidak', 'tidak'),
 		)
 	pengguna 				= models.ForeignKey(User, on_delete=models.CASCADE)
-	nama_file 				= models.CharField(max_length=255, null=True, blank=True)
-	# file 					= models.FileField(upload_to='documents/')
 	print_id				= models.ForeignKey(Print, on_delete=models.CASCADE)
 	jilid					= models.CharField(max_length=255, default='Ya')
 	status_id				= models.ForeignKey(Status, on_delete=models.CASCADE, default='1')
@@ -62,9 +62,8 @@ class Pemesanan(models.Model):
 	harga_bayar				= models.FloatField(default=0)
 	status_bayar 			= models.CharField(max_length=255, choices=STATUS, default='Belum Dibayar')
 	bukti 					= models.ImageField(upload_to='documents/', null=True, blank=True)
-
-
-
+	slug  					= models.SlugField(max_length=255, null=True, blank=True)
+	keterangan 				= models.CharField(max_length=255, null=True, blank=True)
 
 	def filename(self):
 		return os.path.basename(value.file.name)
@@ -86,7 +85,7 @@ class Pemesanan(models.Model):
 
 
 	def save(self, *args, **kwargs):
-		
+		self.slug = slugify(self.created_at)
 		super(Pemesanan, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):

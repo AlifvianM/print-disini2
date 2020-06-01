@@ -4,7 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, SetPasswordForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordResetConfirmView
-# from .models import Profile
+from .models import Profile
+
 
 
 
@@ -132,3 +133,32 @@ class UserUpdateForm(forms.ModelForm):
 		model = User
 		fields = ['first_name', 'last_name', 'username', 'email']
 
+
+class ProfileForm(forms.ModelForm):
+	FAKULTAS = (
+			('BIO', 'biologi'),
+			('FAPERTA', 'pertanian'),
+			('FTP', 'ftp'),
+		)
+
+	NIM = forms.CharField(
+			widget=forms.TextInput(
+					attrs = {
+						'class':'form-control'
+					}
+				)
+		)
+
+	fakultas = forms.ChoiceField(choices=FAKULTAS,
+			widget=forms.Select(
+					attrs = {
+						'class':'form-control'
+					}
+				)
+		)
+	class Meta:
+         model = Profile
+         fields = (
+         	'NIM', 
+         	'fakultas',
+         	)
