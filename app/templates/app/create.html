@@ -7,35 +7,6 @@
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-       <!--  <div class="form-group-inner">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <label class="login2 pull-right pull-right-pro">{{form.nama_file.label}}</label>
-                </div>
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                    {{form.nama_file}}
-                </div>
-            </div>
-        </div> -->
-
-        <!-- <div class="form-group-inner">
-            <div class="row">
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                    <label class="login2 pull-right pull-right-pro">{{form.file.label}}</label>
-                </div>
-                <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                    <div class="file-upload-inner ts-forms">
-                        <div class="input prepend-small-btn">
-                            <div class="file-button" style="background-color: #0f63bd">
-                                Browse
-                                {{form.file}}
-                            </div>
-                            <input type="text" id="prepend-small-btn" disabled placeholder="Masukkan File PDF">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
         <div class="form-group-inner">
             <div class="row">
@@ -66,13 +37,10 @@
                     <label class="login2 pull-right pull-right-pro">{{form.waktu_pengambilan.label}}</label>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-
                     {{form.waktu_pengambilan}}
-
                 </div>
             </div>
         </div>
-
 
         <div class="form-group-inner">
             <div class="row">
@@ -82,39 +50,23 @@
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                     <div class="form-select-list">
                         {{form.pengambilan_id}}
-                    </select>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="form-group-inner" id="data_1">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <label class="login2 pull-right pull-right-pro">{{form.copy.label}}</label>
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                <div class="touchspin-inner">
+        <div class="form-group-inner" id="data_1">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <label class="login2 pull-right pull-right-pro">{{form.copy.label}}</label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                     {{form.copy}}
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="form-group-inner">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <label class="login2 pull-right pull-right-pro">{{form.status_id.label}}</label>
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                {{form.status_id}}
-            </div>
-        </div>
-    </div >
-
-
-
-<div class="form-group-inner">
+        <div class="form-group-inner" id="data_1">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                     <label class="login2 pull-right pull-right-pro">{{file_forms.file.label}}</label>
@@ -126,7 +78,7 @@
                                 Browse
                                 {{file_forms.file}}
                             </div>
-                            <!-- <input type="text" id="prepend-small-btn" disabled placeholder="Masukkan File PDF"> -->
+                            <input type="text" id="prepend-small-btn" disabled placeholder="Masukkan File PDF">
                         </div>
                     </div>
                 </div>
@@ -134,7 +86,7 @@
         </div>
 
 
-     <div class="form-group-inner">
+        <div class="form-group-inner">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="login2 pull-right pull-right-pro">{{form.keterangan.label}}</label>
@@ -145,11 +97,12 @@
             </div>
         </div>
 
-    <div class="text-center m-b-md custom-login">
-        <button class="btn btn-primary" type="submit">SUBMIT</button>
-    </div>
+        <div class="text-center m-b-md custom-login">
+            <button class="btn btn-primary" type="submit">SUBMIT</button>
+        </div>
 
-</form>
+    </form>
+</div>
 {% endblock content %}
 
 

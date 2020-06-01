@@ -2,50 +2,66 @@
 
 
 {% block content %}
-<a class="btn btn-primary" href="{% url 'app-create' %}">Tambah</a>
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <!-- <th scope="col">Nama File</th> -->
-      <th scope="col">ID</th>
-      <th scope="col">Jenis Cetak</th>
-      <th scope="col">Waktu Pengambilan</th>
-      <th scope="col">Tempat Pengambilan</th>
-      <th scope="col">Banyak Halaman</th>
-      <th scope="col">Harga</th>
-      <th scope="col">Status Pembayaran</th>
-      <th scope="col">Nama Pemesan</th>
+<div class="data-table-area mg-tb-15">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="sparkline13-list">
+          <div class="datatable-dashv1-list custom-datatable-overright">
+            <div class="container-fluid" style="margin-bottom: 10px;">
+              <a class="btn btn-primary" href="{% url 'app-create' %}">Tambah</a>
+            </div>
+
+            <div class="container-fluid">
+              <!-- <table class="table"> -->
+                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="false" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                  <thead>
+                    <tr>
+                      <th data-field="state" scope="col">No</th>
+                      <!-- <th scope="col">Nama File</th> -->
+                      <th data-field="state" scope="col">ID</th>
+                      <th data-field="state" scope="col">Jenis Cetak</th>
+                      <th data-field="state" scope="col">Waktu Pengambilan</th>
+                      <th data-field="state" scope="col">Tempat Pengambilan</th>
+                      <th data-field="state" scope="col">Banyak Halaman</th>
+                      <th data-field="state" scope="col">Harga</th>
+                      <th data-field="state" scope="col">Status Pembayaran</th>
+                      <th data-field="state" scope="col">Nama Pemesan</th>
 
 
 
-    </tr>
-  </thead>
-  <tbody>
-    {% for pesan in pemesanans %}
-        
-      
-      <tr>
-        <td>{{forloop.counter}}</td>
-        <!-- <td><a href="{% url 'app-detail' pesan.id %}">{{pesan.nama_file}}</a></td> -->
-        <td>{{pesan.id}}</td>
-        <td>{{pesan.print_id.jenis_print}}</td>
-        <td>{{pesan.waktu_pengambilan}}</td>
-        <td>{{pesan.pengambilan_id.tempat_pengambilan}}</td>
-        <td>{{pesan.status_id}}</td>
-        <td>Rp.{{pesan.harga_bayar}}</td>
-        <td>{{pesan.status_bayar}}</td>
-        <td>{{pesan.pengguna}}</td>
-        <td><a href="{% url 'app-detail' pesan.id %}">Detail</a></td>
-        <td><a href="{% url 'app-delete' pesan.id %}">Delete</a></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for pesan in pemesanans %}
 
 
-        
-      </tr>
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <!-- <td><a href="{% url 'app-detail' pesan.id %}">{{pesan.nama_file}}</a></td> -->
+                      <td>{{pesan.id}}</td>
+                      <td>{{pesan.print_id.jenis_print}}</td>
+                      <td>{{pesan.waktu_pengambilan}}</td>
+                      <td>{{pesan.pengambilan_id.tempat_pengambilan}}</td>
+                      <td>{{pesan.status_id}}</td>
+                      <td>Rp.{{pesan.harga_bayar}}</td>
+                      <td>{{pesan.status_bayar}}</td>
+                      <td>{{pesan.pengguna}}</td>
+                      <td><a href="{% url 'app-detail' pesan.id %}">Detail</a></td>
+                      <td><a href="{% url 'app-delete' pesan.id %}">Delete</a></td>
 
-      {% endfor %}
-  </tbody>
-</table>
-      </tbody>
-    </table>
-{% endblock content %}
+
+
+                    </tr>
+
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
