@@ -54,13 +54,34 @@ class NewPasswordResetView(PasswordResetView):
 
 
 class MyAuthForm(AuthenticationForm):
-    error_messages = {
+	username =forms.CharField(
+			widget=forms.TextInput(
+					attrs = {
+						'class':'form-control',
+						
+					}
+				),
+			label = 'Username'
+		)
+
+	password = forms.CharField(
+    		widget=forms.PasswordInput(
+    				attrs={
+    					'class':'form-control',
+    					'type':'password'
+    				}
+    			)	
+    	)
+
+	error_messages = {
         'invalid_login': _(
             "Username atau Password anda salah. Mohon periksa kembali."
             # "fields may be case-sensitive."
         ),
         'inactive': _("This account is inactive."),
     }
+
+
 
 
 class MyLoginView(LoginView):
@@ -141,6 +162,12 @@ class ProfileForm(forms.ModelForm):
 			('FTP', 'ftp'),
 		)
 
+	JURUSAN = (
+			('MATEMATIKA', 'matematika'),
+			('Fisika', 'fisika'),
+			('SISTEM INFORMASI', 'si'),
+		)
+
 	NIM = forms.CharField(
 			widget=forms.TextInput(
 					attrs = {
@@ -156,9 +183,26 @@ class ProfileForm(forms.ModelForm):
 					}
 				)
 		)
+	jurusan = forms.ChoiceField(choices=JURUSAN,
+			widget=forms.Select(
+					attrs = {
+						'class':'form-control'
+					}
+				)
+		)
+	nohp = forms.CharField(
+			widget=forms.TextInput(
+					attrs = {
+						'class':'form-control',
+						'type':'number',
+					}
+				), label='Nomor Handphone (Whatsapp)'
+		)
 	class Meta:
          model = Profile
          fields = (
          	'NIM', 
          	'fakultas',
+         	'jurusan',
+         	'nohp',
          	)

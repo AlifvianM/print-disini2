@@ -26,7 +26,7 @@ import PyPDF2, io
 @login_required
 def UserPost(request):
     user_post = Pemesanan.objects.filter(pengguna = request.user).order_by('-created_at')
-    print(user_post)
+    # print(user_post)
     template = 'app/list.html'
     return render(request, template, {
                 'pemesanans':user_post
@@ -76,6 +76,24 @@ class PemesananUpdateView(UpdateView):
     template_name = 'app/bayar.html'
     form_class = PemesananUpdateForm
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pesans']=FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk'])
+        context['setors']=Pemesanan.objects.filter(id=self.kwargs['pk'])
+        context['users'] = self.request.user
+        obj = super(PemesananUpdateView, self).get_object(queryset = context['setors'])
+        # print(obj)
+        if obj.jilid == 'Ya':
+            total = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00
+            context['total'] = total + 3000
+            obj.harga_bayar = context['total']
+            obj.save()
+            if obj.bukti:
+                obj.status_bayar = 'Menunggu Pembayaran'
+        else:
+            context['total'] = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00  
+        return context
+
 
     def get_success_url(self, **kwargs):
         return reverse('app-detail', kwargs={'pk':self.object.id})
@@ -109,13 +127,15 @@ class PemesananDetailView(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context = super().get_context_data(**kwargs)
         context['pesans']=FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk'])
         context['setors']=Pemesanan.objects.filter(id=self.kwargs['pk'])
+        context['users'] = self.request.user
         obj = super(PemesananDetailView, self).get_object(queryset = context['setors'])
-        print(obj)
+        # print(obj)
         if obj.jilid == 'Ya':
             total = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00
-            context['total'] = total + 3000
-            obj.harga_bayar = context['total']
+            context['total'] = (total * obj.copy ) + 3000
+            obj.harga_bayar = context['total'] 
             obj.save()
+            print(obj.bukti)
             if obj.bukti:
                 obj.status_bayar = 'Menunggu Pembayaran'
         else:

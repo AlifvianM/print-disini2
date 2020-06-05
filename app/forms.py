@@ -101,7 +101,7 @@ class PemesananUpdateForm(forms.ModelForm):
     bukti = forms.ImageField(
             widget=forms.FileInput(
                     attrs = {
-                        'class' : 'form-control',
+                        'class' : 'form-control col-md-6',
                         'type'  : 'file',
                         'onchange' : 'document.getElementById("prepend-small-btn").value = files[0].name;',
                     }

@@ -8,6 +8,12 @@ from django.utils.text import slugify
 from hashid_field import HashidField, HashidAutoField
 
 
+from pdfminer.pdfparser import PDFParser
+from pdfminer.pdfdocument import PDFDocument
+from pdfminer.pdfpage import PDFPage
+from pdfminer.pdfinterp import resolve1
+
+
 # Create your models here.
 
 class Print(models.Model):
@@ -113,12 +119,18 @@ class FilePemesanan(models.Model):
 
 	def save(self, *args, **kwargs):
 		base_dir =settings.MEDIA_ROOT    
-		# my_file = os.path.join(base_dir, str(self.file))
-		pdf = PyPDF2.PdfFileReader(self.file)
+		my_file = os.path.join(base_dir, str(self.file.path))
+		print(my_file)
+		pdf = PyPDF2.PdfFileReader(self.file, 'rb')
 		self.banyak_halaman = pdf.getNumPages()
 		self.harga = self.banyak_halaman * self.pemesanan_id.print_id.harga
 
-
+		# file = self.file.path
+		# print(file)
+		# file = open(self.file.path, 'rb')
+		# parser = PDFParser(file)
+		# document = PDFDocument(parser)
+		# print(resolve1(document.catalog['Pages'])['Count'])
 		super(FilePemesanan, self).save(*args, **kwargs)
 
 	def __str__(self):

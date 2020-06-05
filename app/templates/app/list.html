@@ -27,7 +27,8 @@
                       <th data-field="state" scope="col">Harga</th>
                       <th data-field="state" scope="col">Status Pembayaran</th>
                       <th data-field="state" scope="col">Nama Pemesan</th>
-
+                      <th data-field="state" scope="col">Status Bayar</th>
+                      <th data-field="state" scope="col">Aksi</th>
 
 
                     </tr>
@@ -47,6 +48,7 @@
                       <td>Rp.{{pesan.harga_bayar}}</td>
                       <td>{{pesan.status_bayar}}</td>
                       <td>{{pesan.pengguna}}</td>
+                      <td>{{pesan.status_bayar}}</td>
                       <td><a href="{% url 'app-detail' pesan.id %}">Detail</a></td>
                       <td><a href="{% url 'app-delete' pesan.id %}">Delete</a></td>
 
