@@ -8,6 +8,7 @@
     <div class="sparkline-content">
       <div class="text-center m-b-md custom-login">
         <h2 style="color: #0f63bd "><B>SELAMAT DATANG</B></h2>
+        <h3 style="text-center">{{user.first_name}} {{user.last_name}}</h3>
       </div>
     </div>
   </div>
@@ -35,7 +36,7 @@
                         <tr>
                           <th data-field="state" scope="col">No</th>
                           <!-- <th scope="col">Nama File</th> -->
-                          <th data-field="state" scope="col">ID</th>
+                          <!-- <th data-field="state" scope="col">ID</th> -->
                           <th data-field="state" scope="col">Jenis Cetak</th>
                           <th data-field="state" scope="col">Waktu Pengambilan</th>
                           <th data-field="state" scope="col">Tempat Pengambilan</th>
@@ -58,7 +59,7 @@
                         <tr>
                           <td>{{forloop.counter}}</td>
                           <!-- <td><a href="{% url 'app-detail' pesan.id %}">{{pesan.nama_file}}</a></td> -->
-                          <td>{{pesan.id}}</td>
+                          <!-- <td>{{pesan.id}}</td> -->
                           <td>{{pesan.print_id.jenis_print}}</td>
                           <td>{{pesan.waktu_pengambilan}}</td>
                           <td>{{pesan.pengambilan_id.tempat_pengambilan}}</td>

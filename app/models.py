@@ -64,7 +64,7 @@ class Pemesanan(models.Model):
 	update_at 				= models.DateTimeField(auto_now=True)
 	waktu_pengambilan 		= models.DateField()
 	pengambilan_id 			= models.ForeignKey(Pengambilan, on_delete=models.CASCADE)
-	copy 					= models.IntegerField(default=1)
+	copy 					= models.PositiveIntegerField(default=1)
 	harga_bayar				= models.FloatField(default=0)
 	status_bayar 			= models.CharField(max_length=255, choices=STATUS, default='Belum Dibayar')
 	bukti 					= models.ImageField(upload_to='documents/', null=True, blank=True)

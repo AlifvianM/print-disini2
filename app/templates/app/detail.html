@@ -26,50 +26,51 @@
 
         <div class="card shadow mb-4 mt-3">
           <div class="card-body">
-            <table class="table table-bordered">
+            <a class="btn btn-primary mb-4" href="{% url 'app-update' setor.id %}">Bayar</a>
+            <table class="table table-bordered mt-3">
               {% for setor in setors %}
                 
               <tr>
                 <td>ID Pemesanan </td>
-                <td>:</td>
+                <!-- <td>:</td> -->
                 <td>{{setor.id}}</td>
               </tr>
               <tr>
                 <td>Atas Nama </td>
-                <td>:</td>
+                <!-- <td>:</td> -->
                 <td>{{setor.pengguna.first_name}}</td>
               </tr>
               <tr>
                 <td>Jenis Print</td>
-                <td>:</td>
+                <!-- <td>:</td> -->
                 <td>{{setor.print_id.jenis_print}}</td>
               </tr>
               <tr>
                 <td>Jilid </td>
-                <td>:</td>
+                <!-- <td>:</td> -->
                 <td>{{setor.jilid}}</td>
               </tr>
               <tr>
                 <td>Copy </td>
-                <td>:</td>
+                <!-- <td>:</td> -->
                 <td>{{setor.copy}} Kali Cetak</td>
               </tr>
               <tr>
                 <td>Waktu Ambil </td>
-                <td>:</td>
+                <!-- <td>:</td> -->
                 <td>{{setor.waktu_pengambilan|date:"d F Y"}}</td>
               </tr>
               <tr>
                 <td>Harga Bayar</td>
-                <td>:</td>
+                <!-- <td>:</td> -->
                 <td>{{setor.harga_bayar}}</td>
               </tr>
               <tr>
                 <td>Status Pembayaran</td>
-                <td>:</td>
+                <!-- <td>:</td> -->
                 <td>{{setor.status_bayar}}</td>
               </tr>
-              <a class="btn btn-primary" href="{% url 'app-update' setor.id %}">Bayar</a>
+              
               
               {% endfor %}
             </table>

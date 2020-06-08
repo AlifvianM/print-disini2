@@ -85,7 +85,7 @@ class PemesananUpdateView(UpdateView):
         # print(obj)
         if obj.jilid == 'Ya':
             total = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00
-            context['total'] = total + 3000
+            context['total'] = (total * obj.copy) + 3000
             obj.harga_bayar = context['total']
             obj.save()
             if obj.bukti:
@@ -133,8 +133,10 @@ class PemesananDetailView(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         if obj.jilid == 'Ya':
             total = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00
             context['total'] = (total * obj.copy ) + 3000
-            obj.harga_bayar = context['total'] 
+            obj.harga_bayar = context['total']
+            print(obj.harga_bayar) 
             obj.save()
+            print(obj.harga_bayar)
             print(obj.bukti)
             if obj.bukti:
                 obj.status_bayar = 'Menunggu Pembayaran'
