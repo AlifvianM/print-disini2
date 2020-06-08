@@ -1,5 +1,5 @@
 {% extends "app/home.html" %}
-
+{% load static %}
 {% block content %}
 
    <div class="container-fluid">
@@ -95,12 +95,12 @@
                                 <div class="panel-heading accordion-head">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion3" href="#ovo">
-                                        Transfer saldo OVO</a>
+                                        Transfer saldo OVO</a><img src="{% static "app/vendor/img/logo/logo-ovo.png" %}" width="23rm" style="padding-left: 5px">
                                     </h4>
                                 </div>
                                 <div id="ovo" class="panel-collapse panel-ic collapse">
                                     <div class="panel-body admin-panel-content">
-                                        <p> Transfer saldo OVO</p>
+                                        <p> Transfer saldo OVO </p>
                                         <ol>
                                           <li>Pilih "Transfer".</li>
                                           <li>Kemudian pilih "Ke Sesama OVO"</li>
@@ -118,7 +118,7 @@
                             <div class="panel-heading accordion-head">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion3" href="#gopay">
-                                    Transfer saldo GOPAY</a>
+                                    Transfer saldo GOPAY</a> <img src="{% static "app/vendor/img/logo/logo-gopay.png" %}" width="60rm" style="padding-left: 5px">
                                 </h4>
                             </div>
                             <div id="gopay" class="panel-collapse panel-ic collapse">

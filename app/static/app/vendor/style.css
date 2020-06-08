@@ -3013,8 +3013,8 @@ ul.mailbox-list li:hover a, ul.h-list li:hover a {
     text-align: left;
 }
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-    background-color: #e12503;
-    border-color: #e12503;
+    background-color: #0f63bd;
+    border-color: #0f63bd;
 }
 .fixed-table-pagination {
     padding: 0px 10px;

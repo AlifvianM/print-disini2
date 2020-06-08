@@ -72,7 +72,28 @@
     <!-- modernizr JS
     ============================================ -->
     <script src="{% static "app/vendor/js/vendor/modernizr-2.8.3.min.js" %}"></script>
-          <link rel="stylesheet" href="{% static "app/vendor/css/form/all-type-forms.css" %}">
+    <link rel="stylesheet" href="{% static "app/vendor/css/form/all-type-forms.css" %}">
+
+    <!-- Bootstrap -->
+    <link href="http://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <!-- <link href="{% static "app/vendor/bootstrap/dist/css/bootstrap.min.css"  %}" rel="stylesheet"> -->
+    <!-- Font Awesome -->
+    <link href="{% static "app/vendor/font-awesome/css/font-awesome.min.css"  %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static "app/vendor/nprogress/nprogress.css"  %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static "app/vendor/iCheck/skins/flat/green.css"  %}" rel="stylesheet">
+    <!-- Datatables -->
+    
+    <link href="{% static "app/vendor/datatables.net-bs/css/dataTables.bootstrap.min.css"  %}" rel="stylesheet">
+    <link href="{% static "app/vendor/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"  %}" rel="stylesheet">
+    <link href="{% static "app/vendor/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"  %}" rel="stylesheet">
+    <link href="{% static "app/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"  %}" rel="stylesheet">
+    <link href="{% static "app/vendor/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"  %}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <!-- <link href="{% static "app/vendor/custom.min.css"  %}" rel="stylesheet"> -->
+
 </head>
 
 <body>
@@ -92,6 +113,7 @@
             </div>
         </div>
  -->
+
         <div class="header-advance-area">
             <div class="header-top-area" style="background: linear-gradient(180deg, #0f63bd 50%, #0f63bd 100%);left: 0px;">
                 <div class="container-fluid">
@@ -142,6 +164,52 @@
                 </div>
             </div>
         </div>
+                    <!-- Mobile Menu start -->
+    <!-- <div class="mobile-menu-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="mobile-menu">
+              <nav id="dropdown">
+                <ul class="mobile-menu-nav">
+                  <li>
+                    <a data-toggle="collapse" data-target="#Charts" href="#">Home<span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                    <ul class="collapse dropdown-header-top">
+                      <li><a href="index">Kontak</a></li>
+                      <li><a href="index-1">Tentang</a></li>
+                      <li><a href="index-3">Bantuan</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" data-target="#demo" href="<?= base_url('pendamping/daftar_ibuhamil'); ?>">Daftar Ibu Hamil<span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" data-target="#others" href="<?= base_url('pendamping/kegiatan_pendampingan'); ?>">List Kegiatan<span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" data-target="#Miscellaneousmob" href="<?= base_url('pendamping/logbook_pendampingan'); ?>">Logbook<span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" data-target="#Chartsmob" href="<?= base_url('pendamping/kesehatan_ibuhamil'); ?>">Kesehatan Ibu<span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                    <ul id="Chartsmob" class="collapse dropdown-header-top">
+                      <li><a href="<?= base_url('pendamping/kesehatan_ibuhamil'); ?>">Ibu Hamil</a></li>
+                      <li><a href="<?= base_url('pendamping/kesehatan_ibuhamil_nifas'); ?>">Ibu Nifas</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a data-toggle="collapse" data-target="#Tablesmob" href="<?= base_url('pendamping/kesehatan_anak'); ?>">Kesehatan Anak <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                    <ul id="Tablesmob" class="collapse dropdown-header-top">
+                      <li><a href="<?= base_url('pendamping/kesehatan_anak'); ?>">Kesehatan Anak</a></li>
+                      <li><a href="<?= base_url('pendamping/kesehatan_anak_imunisasi'); ?>">Imunisasi Dasar</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
         <!-- Static Table Start -->
         <div class="container-fluid" style="margin-top: 80px;margin-bottom: 100px;">
 
@@ -235,23 +303,35 @@
     <script src="{% static "app/vendor/js/main.js" %}"></script>
     <script src="{% static "app/vendor/js/custom.min.js" %}"></script>
 
-<!-- jQuery -->
-    <script src="{% static "app/vendor/js/jquery/dist/jquery.min.js" %}"></script>
+    <!-- jQuery -->
+    <script src="{% static "app/vendor/jquery/dist/jquery.min.js"  %}"></script>
     <!-- Bootstrap -->
-   <script src="{% static "app/vendor/js/bootstrap/dist/js/bootstrap.bundle.min.js"  %}"></script>
+   <script src="{% static "app/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"  %}"></script>
+    <!-- FastClick -->
+    <script src="{% static "app/vendor/fastclick/lib/fastclick.js"  %}"></script>
+    <!-- NProgress -->
+    <script src="{% static "app/vendor/nprogress/nprogress.js"  %}"></script>
+    <!-- iCheck -->
+    <script src="{% static "app/vendor/iCheck/icheck.min.js"  %}"></script>
+    <!-- Datatables -->
+    <script src="{% static "app/vendor/datatables.net/js/jquery.dataTables.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-buttons/js/buttons.flash.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-buttons/js/buttons.html5.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-buttons/js/buttons.print.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js"  %}"></script>
+    <script src="{% static "app/vendor/datatables.net-scroller/js/dataTables.scroller.min.js"  %}"></script>
+    <script src="{% static "app/vendor/jszip/dist/jszip.min.js"  %}"></script>
+    <script src="{% static "app/vendor/pdfmake/build/pdfmake.min.js"  %}"></script>
+    <script src="{% static "app/vendor/pdfmake/build/vfs_fonts.js"  %}"></script>
 
-        <script src="{% static "app/vendor/js/datatables.net/js/jquery.dataTables.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-bs/js/dataTables.bootstrap.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-buttons/js/dataTables.buttons.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-buttons-bs/js/buttons.bootstrap.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-buttons/js/buttons.flash.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-buttons/js/buttons.html5.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-buttons/js/buttons.print.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-keytable/js/dataTables.keyTable.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-responsive/js/dataTables.responsive.min.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-responsive-bs/js/responsive.bootstrap.js" %}"></script>
-    <script src="{% static "app/vendor/js/datatables.net-scroller/js/dataTables.scroller.min.js" %}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{% static "app/vendor/custom.min.js"  %}"></script>
 </body>
 
 </html>
