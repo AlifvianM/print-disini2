@@ -10,16 +10,16 @@ class PemesananForm(forms.ModelForm):
     #             )
     #     )
 
-    # file = forms.FileField(
-    #         widget=forms.ClearableFileInput(
-    #                 attrs = {
-    #                     'multiple': True,
-    #                     'class' : '',
-    #                     'type'  : 'file',
-    #                     'onchange' : 'document.getElementById("prepend-small-btn").value = files[0].name;',
-    #                 }
-    #             )   
-    #     )
+    file = forms.FileField(
+            widget=forms.ClearableFileInput(
+                    attrs = {
+                        'multiple': True,
+                        'class' : '',
+                        'type'  : 'file',
+                        'onchange' : 'document.getElementById("prepend-small-btn").value = files[0].name;',
+                    }
+                )   
+        )
 
     JILID = (
             ('Ya', 'ya'),
