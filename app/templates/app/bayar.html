@@ -36,7 +36,7 @@
                                         <div>
                                             <h6 class="my-0">File</h6>
                                             {% for pesan in pesans %}
-                                            <small class="text-muted">{{pesan.filename}}</small>
+                                            <small class="text-muted">{{pesan.filename}}</small><br>
                                             {% endfor %}
                                         </div>
 
@@ -91,7 +91,7 @@
     <br>
                             </div>
                             <div class="panel panel-default">
-
+                                {% for setor in setors %}
                                 <div class="panel-heading accordion-head">                                   
                                     <h4 class="panel-title">
                                                   <img src="{% static "app/vendor/img/logo/logo-ovo.png" %}" width="23rm" style="margin-left: 18px; margin-right: 23px;">
@@ -106,8 +106,8 @@
                                           <li>Pilih "Transfer".</li>
                                           <li>Kemudian pilih "Ke Sesama OVO"</li>
                                           <li>Isi nama atau nomor ponsel dengan 081233752188 .</li>
-                                          <li>Isi nominal sesuai dengan total biaya Rp.XXX. Sebelum mengkonfirmasi, pastikan jumlah biaya cetaknya tidak kurang dari ketentuan dan jumlahnya sama (karena tidak ada kembalian). Jika biaya cetak kurang maka dianggap hangus, jika lebih maka dianggap sedekah.</li>
-                                          <li>Selanjutnya isi bagian "Pesan" dengan ID Pemesanmu yaitu X .</li>
+                                          <li>Isi nominal sesuai dengan total biaya <strong> Rp.{{total}} </strong> Sebelum mengkonfirmasi, pastikan jumlah biaya cetaknya tidak kurang dari ketentuan dan jumlahnya sama (karena tidak ada kembalian). Jika biaya cetak kurang maka dianggap hangus, jika lebih maka dianggap sedekah.</li>
+                                          <li>Selanjutnya isi bagian "Pesan" dengan ID Pemesanmu yaitu "<strong>{{setor.id}}</strong>" .</li>
                                           <li>Lalu "Lanjutkan".</li>
                                           <li>Terakhir screen capture bukti transfer kamu dan upload pada kolom bukti pembayaran di bawah ini.</li>
                                           <li>Klik "Submit"</li>
@@ -130,14 +130,15 @@
                                           <li>Pilih "Bayar".</li>
                                           <li>Kemudian pilih cara bayar "Ke nomor HP"</li>
                                           <li>Isi nama atau nomor HP dengan 081233752188 dan "Lanjut".</li>
-                                          <li>Isi nominal sesuai dengan total biaya Rp.XXX dan "Konfirmasi". Sebelum mengkonfirmasi, pastikan jumlah biaya cetaknya tidak kurang dari ketentuan dan jumlahnya sama (karena tidak ada kembalian). Jika biaya cetak kurang maka dianggap hangus, jika lebih maka dianggap sedekah.</li>
-                                          <li>Selanjutnya isi bagian "Tulis sesuatu" dengan ID Pemesanmu yaitu X .</li>
+                                          <li>Isi nominal sesuai dengan total biaya <strong> Rp.{{total}} </strong> dan "Konfirmasi". Sebelum mengkonfirmasi, pastikan jumlah biaya cetaknya tidak kurang dari ketentuan dan jumlahnya sama (karena tidak ada kembalian). Jika biaya cetak kurang maka dianggap hangus, jika lebih maka dianggap sedekah.</li>
+                                          <li>Selanjutnya isi bagian "Tulis sesuatu" dengan ID Pemesanmu yaitu "<strong>{{setor.id}}</strong>" .</li>
                                           <li>Lalu "Konfirmasi & Bayar".</li>
                                           <li>Terakhir screen capture bukti transfer kamu dan upload pada kolom bukti pembayaran di bawah ini.</li>
                                           <li>Klik "Submit"</li>
                                       </ol>
                                </div>
                            </div>
+                           {% endfor %}
                        </div>
 
 
