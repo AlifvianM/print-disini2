@@ -14,8 +14,11 @@ from .models import Pemesanan, CheckOut, FilePemesanan
 from .forms import PemesananForm, CheckOutForm, PemesananUpdateForm, FilePemesananForm
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
-
+from django.contrib import messages
 from django.views.generic import FormView
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 
 from django.contrib.auth.decorators import login_required
 
@@ -75,6 +78,7 @@ class PemesananUpdateView(UpdateView):
     model = Pemesanan
     template_name = 'app/bayar.html'
     form_class = PemesananUpdateForm
+    success_message = 'List successfully saved!!!!'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -87,9 +91,11 @@ class PemesananUpdateView(UpdateView):
             total = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00
             context['total'] = (total * obj.copy) + 3000
             obj.harga_bayar = context['total']
-            obj.save()
+            print(obj.bukti)
             if obj.bukti:
                 obj.status_bayar = 'Menunggu Pembayaran'
+                obj.save()
+
         else:
             context['total'] = FilePemesanan.objects.filter(pemesanan_id=self.kwargs['pk']).aggregate(Sum('harga'))['harga__sum'] or 0.00  
         return context
@@ -107,9 +113,14 @@ class PemesananUpdateView(UpdateView):
 class PemesananDeleteView(DeleteView):
     model = Pemesanan
     template_name = "app/delete.html"
-    success_url = '/home'
+    # success_url = '/home'
 
-    
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('app-list')
 
     def test_func(self):
         pemesanan = self.get_object()
@@ -197,6 +208,20 @@ def create_to_feed(request,*args, **kwargs):
             for f in files:
                 file_instance = FilePemesanan(file=f, pemesanan_id=feed_instance)
                 file_instance.save()
+            current_site = get_current_site(request)
+            mail_subject = 'Pemesanan Berhasil (jangan balas pesan ini).'
+            message = render_to_string('app/email_add_success.html', {
+                # 'user': user,
+                'domain': current_site.domain,
+                # 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+                # 'token':account_activation_token.make_token(user),
+            })
+            # to_email = form.cleaned_data.get('email')
+            to_email = request.user.email
+            email = EmailMessage(
+                        mail_subject, message, to=[to_email]
+            )
+            email.send()
             return redirect(reverse('app-detail',kwargs = {'pk': file_instance.pemesanan_id.id}))
     else:
         form = PemesananForm()

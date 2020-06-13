@@ -27,6 +27,13 @@
         <div class="card shadow mb-4 mt-3">
           <div class="card-body">
             <a class="btn btn-primary mb-4" href="{% url 'app-update' setor.id %}">Bayar</a>
+            {% if messages %}
+              <ul class="messages">
+                {% for message in messages %}
+                  <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
             <table class="table table-bordered mt-3">
               {% for setor in setors %}
                 

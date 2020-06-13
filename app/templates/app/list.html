@@ -8,7 +8,6 @@
     <div class="sparkline-content">
       <div class="text-center m-b-md custom-login">
         <h2 style="color: #0f63bd "><B>SELAMAT DATANG</B></h2>
-        <h3 style="text-center">{{user.first_name}} {{user.last_name}}</h3>
       </div>
     </div>
   </div>
@@ -23,6 +22,7 @@
             <div class="x_title">
               <div class="container-fluid" style="margin-bottom: 10px;">
                 <a class="btn btn-primary" href="{% url 'app-create' %}">Tambah</a>
+
               </div>
 <!--               <h2>Default Example <small>Users</small></h2>
               <div class="clearfix"></div> -->
@@ -36,7 +36,7 @@
                         <tr>
                           <th data-field="state" scope="col">No</th>
                           <!-- <th scope="col">Nama File</th> -->
-                          <!-- <th data-field="state" scope="col">ID</th> -->
+                          <th data-field="state" scope="col">ID</th>
                           <th data-field="state" scope="col">Jenis Cetak</th>
                           <th data-field="state" scope="col">Waktu Pengambilan</th>
                           <th data-field="state" scope="col">Tempat Pengambilan</th>
@@ -59,7 +59,7 @@
                         <tr>
                           <td>{{forloop.counter}}</td>
                           <!-- <td><a href="{% url 'app-detail' pesan.id %}">{{pesan.nama_file}}</a></td> -->
-                          <!-- <td>{{pesan.id}}</td> -->
+                          <td>{{pesan.id}}</td>
                           <td>{{pesan.print_id.jenis_print}}</td>
                           <td>{{pesan.waktu_pengambilan}}</td>
                           <td>{{pesan.pengambilan_id.tempat_pengambilan}}</td>
@@ -68,8 +68,30 @@
                           <td>{{pesan.status_bayar}}</td>
                           <td>{{pesan.pengguna}}</td>
                           <td>{{pesan.status_bayar}}</td>
-                          <td><a href="{% url 'app-detail' pesan.id %}">Detail</a></td>
-                          <td><a href="{% url 'app-delete' pesan.id %}">Delete</a></td>
+                          <td><a class="fa fa-inbox" href="{% url 'app-detail' pesan.id %}"> Detail</a></td>
+                          <td><a class="fa fa-trash" href="#" data-toggle="modal" data-target="#PrimaryModalhdbgcl{{pesan.id}}"> Delete 2</a>
+                <div id="PrimaryModalhdbgcl{{pesan.id}}" class="modal modal-adminpro-general default-popup-PrimaryModal fade" role="dialog" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header header-color-modal bg-color-1" style="background-color:#0f63bd">
+                                        <h4 class="modal-title">Delete Order?</h4>
+                                        <div class="modal-close-area modal-close-df">
+                                            <a class="close" style="background-color:#0f63bd" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <i class="fa fa-trash modal-check-pro" style="color: #0f63bd"></i>
+                                        <h2>Serius mau ngehapus pesanan mu yang ID {{pesan.id}} ? </h2>
+                                        <!-- <p>"{{ object.nama_setor }}"</p> -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a data-dismiss="modal" style="background-color: #0f63bd" href="#">Cancel</a>
+                                        <a href="{% url 'app-delete' pesan.id %}" style="background-color: #0f63bd">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          </td>
 
 
 
